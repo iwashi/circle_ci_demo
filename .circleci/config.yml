@@ -5,4 +5,12 @@ jobs:
        - image: circleci/ruby:latest-browsers
      steps:
        - checkout
-       - run: echo "hello world"
+       - run: 
+           name: bcコマンドのインストール
+           command: sudo apt-get install bc
+       - run: 
+           name: bats(テスト用のライブラリ)のインストール
+           command: git clone https://github.com/sstephenson/bats.git && cd bats && chmod a+x install.sh && sudo ./install.sh /usr/local
+       - run: 
+           name: テスト実行
+           command: ./sample.sh
