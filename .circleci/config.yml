@@ -2,15 +2,15 @@ version: 2
 jobs:
    build:
      docker:
-       - image: circleci/ruby:latest-browsers
+       - image: ubuntu:trusty
      steps:
        - checkout
        - run: 
-           name: bcコマンドのインストール
-           command: sudo apt-get install bc
+           name: 【ビルド】gitとbcコマンドのインストール
+           command: sudo apt-get update && sudo apt-get -y install bc git
        - run: 
-           name: bats(テスト用のライブラリ)のインストール
+           name: 【ビルド】bats(テスト用のライブラリ)のインストール
            command: git clone https://github.com/sstephenson/bats.git && cd bats && chmod a+x install.sh && sudo ./install.sh /usr/local
        - run: 
-           name: テスト実行
+           name: 【テスト】任意の関数の単体テスト
            command: ./sample.sh
