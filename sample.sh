@@ -2,6 +2,6 @@
 
 @test "adding 2+3" {
   result="$(echo 2+3 | bc)"
-  [ "$result" -eq 6 ]
+  [ "$result" -eq 10 ]
 }
 
